@@ -2,7 +2,9 @@ from flask import Flask, jsonify,request
 app = Flask(__name__)
 
 todos = [
-    { "label": "My first task", "done": False }
+    { "label": "My first task", "done": False },
+    { "label": "My second task", "done": False },
+    { "label": "My third task", "done": False }
    
 ]
 
@@ -26,8 +28,8 @@ def add_new_todo():
 
 @app.route('/todos/<int:position>', methods=['DELETE'])
 def delete_todo(position):
-    todos.pop(position)
-    print("This is the position to delete: ",position)
+    todos.pop(position-1)
+    print("This is the position to delete: ",position-1)
     return jsonify(todos)
 
 if __name__ == '__main__': 
